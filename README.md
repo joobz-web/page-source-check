@@ -12,7 +12,7 @@ AI로 만든 홈페이지 50곳을 열어 보니 절반인 25곳에 작업 메�
 3. 클로드 코드를 다시 열어요.
 
 또는 클로드 코드에 이렇게 말해도 돼요.
-> 이 저장소의 skills/page-source-check 폴더를 ~/.claude/skills/ 에 설치해 줘: [저장소 주소]
+> 이 저장소의 skills/page-source-check 폴더를 ~/.claude/skills/ 에 설치해 줘: https://github.com/joobz-web/page-source-check
 
 ## 쓰는 법
 
