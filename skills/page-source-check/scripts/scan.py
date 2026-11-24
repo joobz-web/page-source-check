@@ -436,7 +436,7 @@ def main():
     high = sum(f[0] == "높음" for f in findings)
     mid = sum(f[0] in ("중간", "확인") for f in findings)
     print(f"점검 대상: {target} ({scope}{', --own 포함' if own else ''})")
-    print(f"High {high} · Medium {mid} · Low/Info {len(findings) - high - mid}\n")
+    print(f"높음 {high} · 중간 {mid} · 낮음·참고 {len(findings) - high - mid}\n")
     if not findings:
         print("페이지 소스에서 찾은 게 없어요. DB 권한은 소스만으로 알 수 없으니 --own 점검이나 개발자 확인을 따로 하세요.")
         return

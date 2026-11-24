@@ -1,8 +1,8 @@
-# Remediation 가이드
+# 수정 가이드
 
 점검 결과의 항목별로 어떻게 고치는지 적었다. 스킬이 직접 고치는 것과 사람이 콘솔에서 해야 하는 것을 나눈다.
 
-## A. Agent 수정 (코드 레벨, 요청 시에만)
+## A. 에이전트가 코드에서 고치는 것 (요청 시에만)
 
 | 항목 | 조치 |
 |---|---|
@@ -17,7 +17,7 @@
 | HTTP 혼합 콘텐츠 | `http://` 주소를 `https://`로 |
 | robots.txt의 관리자 주소 | 줄 삭제. 관리자 페이지는 로그인으로 막는다 |
 
-## B. Security Headers (호스팅별)
+## B. 보안 헤더 (호스팅별)
 
 Netlify `netlify.toml`:
 ```toml
@@ -53,7 +53,7 @@ Cloudflare Pages·Netlify `_headers`:
 
 CSP는 `frame-ancestors`만 먼저 넣는다. `script-src`까지 넣으면 분석 도구·채팅 위젯이 막힐 수 있으니, 쓰는 외부 서비스 목록(점검 결과의 '외부 서비스')을 보고 사용자와 함께 정한다.
 
-## C. 수집·이용 동의 고지 (PIPA 제15조)
+## C. 수집·이용 동의 고지 (개인정보보호법 제15조)
 
 ```
 [필수] 개인정보 수집·이용 동의
@@ -65,9 +65,9 @@ CSP는 `frame-ancestors`만 먼저 넣는다. `script-src`까지 넣으면 분�
 ```
 마케팅 문자·메일을 보낼 거면 [선택] 마케팅 수신 동의를 따로 받는다. 최종 문구는 법률 검토를 권한다.
 
-## D. Owner 조치 (콘솔)
+## D. 사이트 운영자가 관리 화면에서 할 일
 
-| 항목 | 콘솔 | 절차 |
+| 항목 | 관리 화면 | 절차 |
 |---|---|---|
 | Supabase 표가 로그인 없이 읽힘 | Supabase 대시보드 | Advisors → Security Advisor에서 'RLS Disabled in Public' 확인 → Database → Policies → 그 표의 Enable RLS → 확인 창 Enable RLS. 켜면 정책이 없는 표는 아무도 못 읽고 못 쓴다. 문의 폼이 저장돼야 하면 아래 SQL로 '저장만 허용' 정책을 만든다 |
 | Firebase DB가 열려 있음 | Firebase 콘솔 → Realtime Database → 규칙 | `".read": "auth != null"` 이상으로 바꾸고 게시 |
